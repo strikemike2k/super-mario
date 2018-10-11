@@ -14,7 +14,7 @@ loadImage('images/tileset.png')
   
   for (let x = 0; x < 25; x++) {
     for (let y = 0; y < 14; y++) {
-      sprites.draw('sky', context, x * 16, y * 16);
+      sprites.drawTile('sky', context, x, y);
     }
   }
   
