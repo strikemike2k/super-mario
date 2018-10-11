@@ -10,5 +10,6 @@ loadImage('images/tileset.png')
 .then(image => {
   const sprites = new SpriteSheet(image, 16, 16);
   sprites.define('ground', 0, 0);
-  sprites.draw('ground', context, 45, 62);
+  sprites.define('sky', 3, 23);
+  sprites.draw('sky', context, 45, 62);
 });
