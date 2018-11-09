@@ -14,19 +14,43 @@ function drawBackground(background, context, sprites) {
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
 
+class Compositor {
+  constructor() {
+    this.layers = [];
+  }
+
+  draw(context) {
+    this.layers.forEach(layer => {
+      layer(context);
+    });
+  }
+}
+
+function createBackgroundLayer(backgrounds, sprites) {
+  const buffer = document.createElement('canvas');
+  buffer.width = 256;
+  buffer.height = 240;
+
+  backgrounds.forEach(background => {
+    drawBackground(background, buffer.getContext('2d'), sprites);
+  });
+
+  return function drawBackgroundLayer(context) {
+    context.drawImage(buffer, 0, 0);
+  };
+}
+
 Promise.all([
   loadMarioSprite(),
   loadBackgroundSprites(),
   loadLevel('1-1')
 ])
 .then(([marioSprite, sprites, level]) => {
-  const backgroundBuffer = document.createElement('canvas');
-  backgroundBuffer.width = 256;
-  backgroundBuffer.height = 240;
+  const comp = new Compositor();
 
-  level.backgrounds.forEach(background => {
-    drawBackground(background, backgroundBuffer.getContext('2d'), sprites);
-  });
+  const backgroundLayer = createBackgroundLayer(level.backgrounds, sprites);
+  comp.layers.push(backgroundLayer);
+
 
   const pos = {
     x: 64,
@@ -34,12 +58,12 @@ Promise.all([
   };
 
   function update() {
-    context.drawImage(backgroundBuffer, 0, 0);
+    comp.draw(context);
     marioSprite.draw('idle', context, pos.x, pos.y);
     pos.x += 2;
     pos.y += 2;
     requestAnimationFrame(update);
-  };
+  }
   update();
 
 });
