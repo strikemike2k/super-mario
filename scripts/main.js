@@ -26,7 +26,12 @@ Promise.all([
 
   const pos = {
     x: 64,
-    y: 64
+    y: 180
+  };
+
+  const vel = {
+    x: 2,
+    y: -10
   };
 
   const spriteLayer = createSpriteLayer(marioSprite, pos);
@@ -34,8 +39,8 @@ Promise.all([
 
   function update() {
     comp.draw(context);
-    pos.x += 2;
-    pos.y += 2;
+    pos.x += vel.x;
+    pos.y += vel.y;
     requestAnimationFrame(update);
   }
   update();
