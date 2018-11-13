@@ -12,6 +12,13 @@ function createSpriteLayer(sprite, pos) {
   }
 }
 
+class Vec2 {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
 Promise.all([
   loadMarioSprite(),
   loadBackgroundSprites(),
@@ -25,15 +32,8 @@ Promise.all([
 
   const gravity = 0.5;
 
-  const pos = {
-    x: 64,
-    y: 180
-  };
-
-  const vel = {
-    x: 2,
-    y: -10
-  };
+  const pos = new Vec2(64, 180);
+  const vel = new Vec2(2, -10);
 
   const spriteLayer = createSpriteLayer(marioSprite, pos);
   comp.layers.push(spriteLayer);
