@@ -23,6 +23,7 @@ Promise.all([
   const backgroundLayer = createBackgroundLayer(level.backgrounds, backgroundSprites);
   comp.layers.push(backgroundLayer);
 
+  const gravity = 0.5;
 
   const pos = {
     x: 64,
@@ -41,6 +42,7 @@ Promise.all([
     comp.draw(context);
     pos.x += vel.x;
     pos.y += vel.y;
+    vel.y += gravity;
     requestAnimationFrame(update);
   }
   update();
