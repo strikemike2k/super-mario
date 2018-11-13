@@ -1,4 +1,5 @@
-import Compositor from './compositor.js';
+import Compositor from './Compositor.js';
+import Entity from './Entity.js';
 import {loadLevel} from './loaders.js';
 import {loadMarioSprite, loadBackgroundSprites} from './sprites.js';
 import {createBackgroundLayer} from './layers.js';
@@ -12,23 +13,6 @@ function createSpriteLayer(entity) {
   }
 }
 
-class Vec2 {
-  constructor(x, y) {
-    this.set(x, y);
-  }
-
-  set(x, y){
-    this.x = x;
-    this.y = y;
-  }
-}
-
-class Entity {
-  constructor() {
-    this.pos = new Vec2(0, 0);
-    this.vel = new Vec2(0, 0);
-  }
-}
 
 Promise.all([
   loadMarioSprite(),
