@@ -1,0 +1,24 @@
+export default class Timer {
+  constructor(deltaTime = 1/60){
+
+    let accumulatedTime = 0;
+    let lastTime = 0;
+
+    this.updateProxy = (time) => { // Change function to pointer method
+      accumulatedTime = (time - lastTime) / 1000;
+      while (accumulatedTime > deltaTime) {
+
+        this.update(deltaTime);
+        accumulatedTime -= deltaTime;
+      }
+
+      lastTime = time;
+
+      requestAnimationFrame(this.updateProxy);
+    }
+  }
+
+  start() {
+    requestAnimationFrame(this.updateProxy);
+  }
+}
