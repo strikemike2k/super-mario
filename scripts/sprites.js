@@ -1,4 +1,4 @@
-import SpriteSheet from './sprite_sheet.js'
+import SpriteSheet from './SpriteSheet.js'
 import {loadImage} from './loaders.js';
 
 export function loadMarioSprite() {
