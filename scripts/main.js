@@ -3,17 +3,10 @@ import Entity from './Entity.js';
 import {loadLevel} from './loaders.js';
 import {createMario} from './entities.js';
 import {loadBackgroundSprites} from './sprites.js';
-import {createBackgroundLayer} from './layers.js';
+import {createBackgroundLayer, createSpriteLayer} from './layers.js';
 
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
-
-function createSpriteLayer(entity) {
-  return function drawSpriteLayer(context) {
-    entity.draw(context);
-  }
-}
-
 
 Promise.all([
   createMario(),
