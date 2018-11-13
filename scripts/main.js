@@ -35,8 +35,8 @@ Promise.all([
     comp.draw(context);
     mario.update(deltaTime);
     mario.vel.y += gravity;
-    requestAnimationFrame(update);
-    //setTimeout(update, 1000/60);
+    //requestAnimationFrame(update);
+    setTimeout(update, 1000/60, performance.now());
 
     lastTime = time;
   }
