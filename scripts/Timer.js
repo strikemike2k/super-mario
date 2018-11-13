@@ -14,11 +14,15 @@ export default class Timer {
 
       lastTime = time;
 
-      requestAnimationFrame(this.updateProxy);
+      this.enqueue();
     }
   }
 
-  start() {
+  enqueue() {
     requestAnimationFrame(this.updateProxy);
+  }
+
+  start() {
+    this.enqueue();
   }
 }
