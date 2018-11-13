@@ -6,8 +6,6 @@ export function createMario() {
   .then(sprite => {
     // BEGIN exact copy from main.js
     const mario = new Entity();
-    mario.pos.set(64, 180);
-    mario.vel.set(2, -10);
 
     mario.draw = function drawMario(context) {
       sprite.draw('idle', context, this.pos.x, this.pos.y); // change marioSprite to sprites

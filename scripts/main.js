@@ -19,7 +19,9 @@ Promise.all([
   const backgroundLayer = createBackgroundLayer(level.backgrounds, backgroundSprites);
   //comp.layers.push(backgroundLayer);
 
-  const gravity = 0.5;
+  const gravity = 30;
+  mario.pos.set(64, 180);
+  mario.vel.set(100, -120);
 
   const spriteLayer = createSpriteLayer(mario);
   comp.layers.push(spriteLayer);
