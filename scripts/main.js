@@ -24,12 +24,13 @@ Promise.all([
   const spriteLayer = createSpriteLayer(mario);
   comp.layers.push(spriteLayer);
 
-  function update() {
+  function update(time) {
+    console.log(time);
     comp.draw(context);
     mario.update();
     mario.vel.y += gravity;
-    //requestAnimationFrame(update);
-    setTimeout(update, 1000/60);
+    requestAnimationFrame(update);
+    //setTimeout(update, 1000/60);
   }
   update();
 
