@@ -28,16 +28,16 @@ Promise.all([
   let lastTime = 0;
 
   function update(time) {
-    deltaTime = time - lastTime;
+    deltaTime = (time - lastTime) / 1000;
     console.log(deltaTime, time);
     comp.draw(context);
-    mario.update();
+    mario.update(deltaTime);
     mario.vel.y += gravity;
     requestAnimationFrame(update);
     //setTimeout(update, 1000/60);
 
     lastTime = time;
   }
-  update();
+  update(0);
 
 });
