@@ -6,7 +6,7 @@ import {createBackgroundLayer} from './layers.js';
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
 
-function createSpriteLayer(entity) { // refactor createSpriteLayer after mario.draw is created
+function createSpriteLayer(entity) {
   return function drawSpriteLayer(context) {
     entity.draw(context);
   }
@@ -56,7 +56,7 @@ Promise.all([
     this.pos.y += this.vel.y;
   }
 
-  const spriteLayer = createSpriteLayer(mario); // refactor createSpriteLayer to accept the mario object
+  const spriteLayer = createSpriteLayer(mario);
   comp.layers.push(spriteLayer);
 
   function update() {
