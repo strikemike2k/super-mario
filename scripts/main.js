@@ -21,20 +21,24 @@ Promise.all([
 
   const gravity = 30;
   mario.pos.set(64, 180);
-  mario.vel.set(100, -120);
+  mario.vel.set(200, -600);
 
   const spriteLayer = createSpriteLayer(mario);
   comp.layers.push(spriteLayer);
 
-  let deltaTime = 0;
+  const deltaTime = 1/60;
+  let accumulatedTime = 0;
   let lastTime = 0;
 
   function update(time) {
-    deltaTime = (time - lastTime) / 1000;
+    accumulatedTime = (time - lastTime) / 1000;
     console.log(deltaTime, time);
-    comp.draw(context);
-    mario.update(deltaTime);
-    mario.vel.y += gravity;
+    while (accumulatedTime > deltaTime) {
+      comp.draw(context);
+      mario.update(deltaTime);
+      mario.vel.y += gravity;
+      accumulatedTime -= deltaTime;
+    }
     //requestAnimationFrame(update);
     setTimeout(update, 1000/60, performance.now());
 
