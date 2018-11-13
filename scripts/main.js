@@ -28,7 +28,8 @@ Promise.all([
     comp.draw(context);
     mario.update();
     mario.vel.y += gravity;
-    requestAnimationFrame(update);
+    //requestAnimationFrame(update);
+    setTimeout(update, 1000/60);
   }
   update();
 
