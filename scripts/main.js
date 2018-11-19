@@ -44,6 +44,9 @@ Promise.all([
   const timer = new Timer(1/60);
   timer.update = function update(deltaTime) {
     mario.update(deltaTime);
+    if (mario.pos.y > 176) {
+      mario.pos.y = 176;
+    }
     comp.draw(context);
     mario.vel.y += gravity * deltaTime;
   }
