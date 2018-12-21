@@ -15,6 +15,10 @@ export default class TileCollider {
         entity.pos.y = match.y1;
         entity.vel.y = 0;
       }
+    } else if (entity.vel.y < 0) {
+      if (entity.pos.y < match.y2) {
+        entity.pos.y = match.y2;
+      }
     }
   }
 
