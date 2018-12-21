@@ -24,13 +24,20 @@ Promise.all([
   level.entities.add(mario);
 
   const SPACE = 32;
+  const RIGHT = 39;
+  const LEFT = 37;
   input.addMapping(SPACE, keyState => {
     if (keyState) {
       mario.jump.start();
     } else {
       mario.jump.cancel();
     }
-    console.log(keyState);
+  });
+  input.addMapping(RIGHT, keyState => {
+    mario.go.direction = keyState;
+  });
+  input.addMapping(LEFT, keyState => {
+    mario.go.direction = -keyState;
   });
   input.listenTo(window);
 
