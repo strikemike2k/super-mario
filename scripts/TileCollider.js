@@ -22,7 +22,7 @@ export default class TileCollider {
     this.checkY(entity);
     const match = this.tiles.matchByPosition(entity.pos.x, entity.pos.y);
     if (match) {
-      console.log('Matched title', match, match.tile);
+      // console.log('Matched title', match, match.tile);
     }
   }
 }
