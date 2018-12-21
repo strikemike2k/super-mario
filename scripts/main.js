@@ -2,8 +2,6 @@ import Timer from'./Timer.js';
 import Entity from './Entity.js';
 import {loadLevel} from './loaders.js';
 import {createMario} from './entities.js';
-import {loadBackgroundSprites} from './sprites.js';
-import {createBackgroundLayer, createSpriteLayer} from './layers.js';
 
 import Keyboard from './KeyboardState.js'
 
