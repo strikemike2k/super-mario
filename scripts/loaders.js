@@ -10,5 +10,13 @@ export function loadImage(url) {
 
 export function loadLevel(name) {
   return fetch(`levels/${name}.json`)
-  .then(r => r.json());
+  .then(r => r.json())
+  .then(levelSpec => {
+    const backgroundLayer = createBackgroundLayer(level.backgrounds, backgroundSprites);
+    comp.layers.push(backgroundLayer);
+
+    const spriteLayer = createSpriteLayer(mario);
+    comp.layers.push(spriteLayer);
+
+  });
 }
