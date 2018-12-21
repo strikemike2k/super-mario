@@ -12,12 +12,13 @@ const context = canvas.getContext('2d');
 
 Promise.all([
   createMario(),
-  loadBackgroundSprites(),
   loadLevel('1-1')
 ])
-.then(([mario, backgroundSprites, level]) => {
+.then(([mario, level]) => {
   const gravity = 2000;
   mario.pos.set(64, 180);
+
+  level.entities.add(mario);
 
   const SPACE = 32;
   input.addMapping(SPACE, keyState => {
@@ -36,7 +37,7 @@ Promise.all([
     if (mario.pos.y > 176) {
       mario.pos.y = 176;
     }
-    comp.draw(context);
+    level.comp.draw(context);
     mario.vel.y += gravity * deltaTime;
   }
 

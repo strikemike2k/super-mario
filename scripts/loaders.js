@@ -1,4 +1,4 @@
-import Level from './level.js';
+import Level from './Level.js';
 import {createBackgroundLayer, createSpriteLayer} from './layers.js';
 import {loadBackgroundSprites} from './sprites.js';
 
@@ -18,7 +18,7 @@ export function loadLevel(name) {
     .then(r => r.json()),
     loadBackgroundSprites()
   ])
-  .then(([levelSpec, backgroundSprite]) => {
+  .then(([levelSpec, backgroundSprites]) => {
     const level = new Level();
 
     const backgroundLayer = createBackgroundLayer(levelSpec.backgrounds, backgroundSprites);
