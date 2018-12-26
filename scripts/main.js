@@ -5,8 +5,6 @@ import {createMario} from './entities.js';
 import {createCollisionLayer} from './layers.js';
 import {setupKeyboard} from './input.js';
 
-const input = new Keyboard();
-
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
 
