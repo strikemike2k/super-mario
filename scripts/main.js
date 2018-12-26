@@ -3,8 +3,7 @@ import Entity from './Entity.js';
 import {loadLevel} from './loaders.js';
 import {createMario} from './entities.js';
 import {createCollisionLayer} from './layers.js';
-
-import Keyboard from './KeyboardState.js'
+import {setupKeyboard} from './input.js';
 
 const input = new Keyboard();
 
@@ -23,22 +22,7 @@ Promise.all([
 
   level.entities.add(mario);
 
-  const SPACE = 32;
-  const RIGHT = 39;
-  const LEFT = 37;
-  input.addMapping(SPACE, keyState => {
-    if (keyState) {
-      mario.jump.start();
-    } else {
-      mario.jump.cancel();
-    }
-  });
-  input.addMapping(RIGHT, keyState => {
-    mario.go.direction = keyState;
-  });
-  input.addMapping(LEFT, keyState => {
-    mario.go.direction = -keyState;
-  });
+  const input = setupKeyboard(mario);
   input.listenTo(window);
 
   ['mousedown', 'mousemove'].forEach(eventName => {
