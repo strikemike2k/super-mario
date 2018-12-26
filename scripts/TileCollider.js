@@ -42,11 +42,4 @@ export default class TileCollider {
       }
     });
   }
-
-  test(entity) {
-    this.checkY(entity);
-    const match = this.tiles.searchByPosition(entity.pos.x, entity.pos.y);
-    if (match) {
-    }
-  }
 }
